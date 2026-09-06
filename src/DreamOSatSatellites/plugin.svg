@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <title>SatBeams Satellites</title>
+  <rect x="4" y="4" width="120" height="120" rx="24" fill="#172d46"/>
+  <circle cx="92" cy="34" r="7" fill="#f3bc48"/>
+  <path d="M72 34a20 20 0 0 1 20 20M59 34a33 33 0 0 1 33 33" fill="none" stroke="#53c9e7" stroke-width="5" stroke-linecap="round"/>
+  <path d="M30 51l47 47C48 112 16 80 30 51z" fill="#eaf4fa"/>
+  <path d="M48 80l27-27" stroke="#f3bc48" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="76" cy="52" r="5" fill="#f3bc48"/>
+  <path d="M51 96l-6 12h32" fill="none" stroke="#53c9e7" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
