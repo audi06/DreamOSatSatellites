@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, unicode_literals
+from . import _
 import re
 try:
     from html import unescape
@@ -46,7 +47,7 @@ class KingOfSatClient(SatBeamsClient):
                 if name and not any(s['name'] == name for s in item['satellites']):
                     item['satellites'].append({'name': name, 'real_pos': value})
         if not groups:
-            raise SatBeamsError('KingOfSat uydu tablosu okunamadı')
+            raise SatBeamsError(_("Could not read KingOfSat satellite table"))
         return [groups[key] for key in sorted(groups)]
 
     def get_transponders(self, position):
@@ -72,5 +73,5 @@ class KingOfSatClient(SatBeamsClient):
                 'polarisation': texts[3], 'fec': sr.group(2), 'encoding': texts[6],
                 'modulation': texts[7], 'satellite_name': satellite_name, 'position': value})
         if not result:
-            raise SatBeamsError('KingOfSat frekans tablosu boş veya biçimi değişmiş: ' + path)
+            raise SatBeamsError(_("KingOfSat transponder table is empty or has changed: ") + path)
         return result

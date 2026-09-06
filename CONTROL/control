@@ -1,5 +1,5 @@
 Package: enigma2-plugin-extensions-dreamosatsatellites
-Version: 1.3.0
+Version: 1.4.0
 Description: SatBeams API satellites.xml generator for Enigma2
 Architecture: all
 Section: extra

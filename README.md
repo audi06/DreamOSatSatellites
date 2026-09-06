@@ -18,9 +18,13 @@ By audi06_19 — info@dreamosat-forum.com
 
 OpenATV ve Dreambox Two Gemini 4.2 üzerinde geliştirilmiştir. Python 2.7 ve Python 3 uyumluluğu hedeflenir. Bölgesel seçimler yörünge aralıklarına dayanır.
 
+## Dil desteği
+
+Cihazın dili otomatik kullanılır. Türkçe ve İngilizce çeviriler `src/DreamOSatSatellites/locale/` altındadır. Yeni dil için `.pot` şablonunu kullanın. `.po` değişikliklerinden sonra `python3 tools/compile_translations.py` çalıştırın. Derlenmiş `.mo` dosyaları da kuruluma dahildir.
+
 ## Lisans ve iletişim
 
-GPL-2.0-or-later. Tam metin: [LICENSE](LICENSE); kapsam: [LICENSING.md](LICENSING.md).
+GPL-3.0-only. Tam metin: [LICENSE](LICENSE); kapsam: [LICENSING.md](LICENSING.md).
 Logolar ve üçüncü taraf verileri ilgili sahiplerinin koşullarına tabidir.
 
 - Destek: https://www.dreamosat-forum.com

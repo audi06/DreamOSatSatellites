@@ -1,0 +1,185 @@
+# DreamOSatSatellites translations
+# SPDX-License-Identifier: GPL-3.0-only
+msgid ""
+msgstr ""
+"Project-Id-Version: DreamOSatSatellites 1.4.0\n"
+"Report-Msgid-Bugs-To: info@dreamosat-forum.com\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Preparing satellite list..."
+msgstr "Preparing satellite list..."
+
+msgid "Close"
+msgstr "Close"
+
+msgid "Select all"
+msgstr "Select all"
+
+msgid "Clear all"
+msgstr "Clear all"
+
+msgid "Download and create"
+msgstr "Download and create"
+
+msgid "DreamOSatSatellites - Menu"
+msgstr "DreamOSatSatellites - Menu"
+
+msgid "Profiles (1-5)"
+msgstr "Profiles (1-5)"
+
+msgid "Regional selection"
+msgstr "Regional selection"
+
+msgid "Skin (4K / FHD / HD)"
+msgstr "Skin (4K / FHD / HD)"
+
+msgid "About / Author / License"
+msgstr "About / Author / License"
+
+msgid "Select profile"
+msgstr "Select profile"
+
+msgid "Profile %d"
+msgstr "Profile %d"
+
+msgid "Profile %s"
+msgstr "Profile %s"
+
+msgid "Add region (orbital ranges)"
+msgstr "Add region (orbital ranges)"
+
+msgid "All"
+msgstr "All"
+
+msgid "Add Europe (0-60E)"
+msgstr "Add Europe (0-60E)"
+
+msgid "Add Atlantic (60W-0)"
+msgstr "Add Atlantic (60W-0)"
+
+msgid "Add America (180W-60W)"
+msgstr "Add America (180W-60W)"
+
+msgid "Add Asia (60E-180E)"
+msgstr "Add Asia (60E-180E)"
+
+msgid "Screen size"
+msgstr "Screen size"
+
+msgid "Save selected satellites"
+msgstr "Save selected satellites"
+
+msgid "Load profile"
+msgstr "Load profile"
+
+msgid "Profile %s saved (%d positions)"
+msgstr "Profile %s saved (%d positions)"
+
+msgid "Profile %s has not been saved yet"
+msgstr "Profile %s has not been saved yet"
+
+msgid "Skin saved. Close and reopen the plugin to apply. Size is limited to your screen resolution."
+msgstr "Skin saved. Close and reopen the plugin to apply. Size is limited to your screen resolution."
+
+msgid "%d positions found. OK: select/clear | MENU: settings"
+msgstr "%d positions found. OK: select/clear | MENU: settings"
+
+msgid "Error: %s"
+msgstr "Error: %s"
+
+msgid "%d / %d positions selected"
+msgstr "%d / %d positions selected"
+
+msgid "Select at least one satellite position first."
+msgstr "Select at least one satellite position first."
+
+msgid "Download %d positions and replace %s. Continue?"
+msgstr "Download %d positions and replace %s. Continue?"
+
+msgid "Downloading transponders for %d positions..."
+msgstr "Downloading transponders for %d positions..."
+
+msgid "No transponders found for selected satellites. Existing XML is preserved."
+msgstr "No transponders found for selected satellites. Existing XML is preserved."
+
+msgid "Tuner list reloaded."
+msgstr "Tuner list reloaded."
+
+msgid "Restart Enigma2 to apply the changes."
+msgstr "Restart Enigma2 to apply the changes."
+
+msgid "Wrote %d satellite positions and %d transponders.\n%s\n%s"
+msgstr "Wrote %d satellite positions and %d transponders.\n%s\n%s"
+
+msgid "Backup: %s"
+msgstr "Backup: %s"
+
+msgid "No previous file existed."
+msgstr "No previous file existed."
+
+msgid "\nSkipped %d positions with no transponders."
+msgstr "\nSkipped %d positions with no transponders."
+
+msgid "Which site would you like to use?"
+msgstr "Which site would you like to use?"
+
+msgid "Left / Right: select source | OK: continue | EXIT: close"
+msgstr "Left / Right: select source | OK: continue | EXIT: close"
+
+msgid "Create satellites.xml from SatBeams or KingOfSat"
+msgstr "Create satellites.xml from SatBeams or KingOfSat"
+
+msgid "API connection error: %s"
+msgstr "API connection error: %s"
+
+msgid "Invalid JSON response: %s"
+msgstr "Invalid JSON response: %s"
+
+msgid "SatBeams returned an unsuccessful response"
+msgstr "SatBeams returned an unsuccessful response"
+
+msgid "Unexpected satellite list format"
+msgstr "Unexpected satellite list format"
+
+msgid "Unexpected frequency list format"
+msgstr "Unexpected frequency list format"
+
+msgid "API returned a different satellite position; please retry"
+msgstr "API returned a different satellite position; please retry"
+
+msgid "Unexpected transponder list format"
+msgstr "Unexpected transponder list format"
+
+msgid "API pagination limit exceeded"
+msgstr "API pagination limit exceeded"
+
+msgid "Invalid transponder position"
+msgstr "Invalid transponder position"
+
+msgid "API returned a transponder outside the selected position: %s"
+msgstr "API returned a transponder outside the selected position: %s"
+
+msgid "Missing satellite position in API record: %s"
+msgstr "Missing satellite position in API record: %s"
+
+msgid "Could not match transponder to actual satellite position: %s"
+msgstr "Could not match transponder to actual satellite position: %s"
+
+msgid "Could not read KingOfSat satellite table"
+msgstr "Could not read KingOfSat satellite table"
+
+msgid "KingOfSat transponder table is empty or has changed: "
+msgstr "KingOfSat transponder table is empty or has changed: "
+
+msgid "DreamOSatSatellites v%s\nBy audi06_19\n\nEmail: info@dreamosat-forum.com\nGitHub: https://github.com/audi06\nSupport forum: https://www.dreamosat-forum.com\nLicense: %s\n\nData sources: https://satbeams.com\nKingOfSat: https://kingofsat.net"
+msgstr "DreamOSatSatellites v%s\nBy audi06_19\n\nEmail: info@dreamosat-forum.com\nGitHub: https://github.com/audi06\nSupport forum: https://www.dreamosat-forum.com\nLicense: %s\n\nData sources: https://satbeams.com\nKingOfSat: https://kingofsat.net"
+
+msgid "%s satellite positions"
+msgstr "%s satellite positions"
+
+msgid "Downloading %s satellite list..."
+msgstr "Downloading %s satellite list..."

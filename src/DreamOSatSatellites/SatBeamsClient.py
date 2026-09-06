@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import
+from . import _
 
 import json
 import math
@@ -122,23 +123,23 @@ class SatBeamsClient(object):
             response = urlopen(request, timeout=self.timeout, context=context)
             raw = response.read()
         except Exception as error:
-            raise SatBeamsError("API bağlantı hatası: %s" % error)
+            raise SatBeamsError(_("API connection error: %s") % error)
 
         try:
             if not isinstance(raw, str):
                 raw = raw.decode("utf-8-sig")
             payload = json.loads(raw)
         except Exception as error:
-            raise SatBeamsError("Geçersiz JSON yanıtı: %s" % error)
+            raise SatBeamsError(_("Invalid JSON response: %s") % error)
 
         if not isinstance(payload, dict) or payload.get("status") != 0:
-            raise SatBeamsError("SatBeams başarısız yanıt döndürdü")
+            raise SatBeamsError(_("SatBeams returned an unsuccessful response"))
         return payload.get("data")
 
     def get_positions(self):
         rows = self._get_json(POSITIONS_URL)
         if not isinstance(rows, list):
-            raise SatBeamsError("Konum listesi beklenen biçimde değil")
+            raise SatBeamsError(_("Unexpected satellite list format"))
 
         result = []
         for row in rows:
@@ -177,16 +178,16 @@ class SatBeamsClient(object):
             )
             data = self._get_json(CHANNELS_URL + "?" + query)
             if not isinstance(data, dict):
-                raise SatBeamsError("Frekans listesi beklenen biçimde değil")
+                raise SatBeamsError(_("Unexpected frequency list format"))
 
             returned_position = data.get("position") or {}
             if isinstance(returned_position, dict) and returned_position.get("rounded_pos") is not None:
                 if orbital_tenths(returned_position["rounded_pos"]) != orbital_tenths(position):
-                    raise SatBeamsError("API farklı uydu konumu döndürdü; lütfen yeniden deneyin")
+                    raise SatBeamsError(_("API returned a different satellite position; please retry"))
 
             page = data.get("transponders") or []
             if not isinstance(page, list):
-                raise SatBeamsError("Transponder listesi beklenen biçimde değil")
+                raise SatBeamsError(_("Unexpected transponder list format"))
             collected.extend(page)
 
             try:
@@ -197,7 +198,7 @@ class SatBeamsClient(object):
             if not page or offset >= total:
                 break
         else:
-            raise SatBeamsError("API sayfalama sınırı aşıldı")
+            raise SatBeamsError(_("API pagination limit exceeded"))
 
         return collected
 
@@ -301,17 +302,17 @@ def real_position_groups(position_rows):
                     try:
                         reported = orbital_tenths(row["position"])
                     except (TypeError, ValueError, OverflowError):
-                        raise SatBeamsError("Geçersiz frekans konumu")
+                        raise SatBeamsError(_("Invalid transponder position"))
                     distance = abs(reported - position["orbital_position"])
                     if min(distance, 3600 - distance) > 5:
-                        raise SatBeamsError("API seçilen konum dışında frekans döndürdü: %s" % row.get("satellite_name", "?"))
+                        raise SatBeamsError(_("API returned a transponder outside the selected position: %s") % row.get("satellite_name", "?"))
                     matches = [reported]
                 elif row.get("satellite_id") is not None or row.get("satellite_name"):
-                    raise SatBeamsError("API kaydında uydu konumu eksik: %s" % row.get("satellite_name", "?"))
+                    raise SatBeamsError(_("Missing satellite position in API record: %s") % row.get("satellite_name", "?"))
                 else:
                     matches = list(set(loc for satellite, loc in locations))
             if len(set(matches)) > 1:
-                raise SatBeamsError("Frekansın gerçek uydu konumu eşleştirilemedi: %s" % row.get("satellite_name", row.get("id", "?")))
+                raise SatBeamsError(_("Could not match transponder to actual satellite position: %s") % row.get("satellite_name", row.get("id", "?")))
             location = matches[0] if matches else position["orbital_position"]
             group = groups.setdefault(location, ({"orbital_position": location,
                 "satellites": []}, []))

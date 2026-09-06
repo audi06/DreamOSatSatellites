@@ -1,7 +1,7 @@
-DreamOSatSatellites 1.3.0
+DreamOSatSatellites 1.4.0
 By audi06_19
 E-mail: info@dreamosat-forum.com
 GitHub: https://github.com/audi06
 Support forum: https://www.dreamosat-forum.com
-License: GPL-2.0-or-later
+License: GPL-3.0-only
 Data source: https://satbeams.com

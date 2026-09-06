@@ -1,0 +1,185 @@
+# DreamOSatSatellites translations
+# SPDX-License-Identifier: GPL-3.0-only
+msgid ""
+msgstr ""
+"Project-Id-Version: DreamOSatSatellites 1.4.0\n"
+"Report-Msgid-Bugs-To: info@dreamosat-forum.com\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Preparing satellite list..."
+msgstr "Konum listesi hazırlanıyor..."
+
+msgid "Close"
+msgstr "Kapat"
+
+msgid "Select all"
+msgstr "Hepsini seç"
+
+msgid "Clear all"
+msgstr "Hepsini kaldır"
+
+msgid "Download and create"
+msgstr "İndir ve oluştur"
+
+msgid "DreamOSatSatellites - Menu"
+msgstr "SatBeams - Menü"
+
+msgid "Profiles (1-5)"
+msgstr "Profiller (1-5)"
+
+msgid "Regional selection"
+msgstr "Bölgesel seçim"
+
+msgid "Skin (4K / FHD / HD)"
+msgstr "Skin (4K / FHD / HD)"
+
+msgid "About / Author / License"
+msgstr "Hakkında / Yazar / Lisans"
+
+msgid "Select profile"
+msgstr "Profil seç"
+
+msgid "Profile %d"
+msgstr "Profil %d"
+
+msgid "Profile %s"
+msgstr "Profil %s"
+
+msgid "Add region (orbital ranges)"
+msgstr "Seçime bölge ekle (yörünge aralıkları)"
+
+msgid "All"
+msgstr "All"
+
+msgid "Add Europe (0-60E)"
+msgstr "add Europe (0°–60°E)"
+
+msgid "Add Atlantic (60W-0)"
+msgstr "add Atlantic (60°W–0°)"
+
+msgid "Add America (180W-60W)"
+msgstr "add America (180°W–60°W)"
+
+msgid "Add Asia (60E-180E)"
+msgstr "add Asia (60°E–180°E)"
+
+msgid "Screen size"
+msgstr "Ekran boyutu"
+
+msgid "Save selected satellites"
+msgstr "Seçilen uyduları kaydet"
+
+msgid "Load profile"
+msgstr "Profili yükle"
+
+msgid "Profile %s saved (%d positions)"
+msgstr "Profil %s kaydedildi (%d konum)"
+
+msgid "Profile %s has not been saved yet"
+msgstr "Profil %s henüz kaydedilmedi"
+
+msgid "Skin saved. Close and reopen the plugin to apply. Size is limited to your screen resolution."
+msgstr "Skin kaydedildi. Eklentiyi kapatıp açınca uygulanır. Boyut, mevcut ekran çözünürlüğüne sığdırılır."
+
+msgid "%d positions found. OK: select/clear | MENU: settings"
+msgstr "%d uydu konumu bulundu. OK: seç/kaldır | MENU: ayarlar"
+
+msgid "Error: %s"
+msgstr "Hata: %s"
+
+msgid "%d / %d positions selected"
+msgstr "%d / %d konum seçildi"
+
+msgid "Select at least one satellite position first."
+msgstr "Önce en az bir uydu konumu seçin."
+
+msgid "Download %d positions and replace %s. Continue?"
+msgstr "%d konum indirilecek ve %s değiştirilecek. Devam edilsin mi?"
+
+msgid "Downloading transponders for %d positions..."
+msgstr "%d konumun frekansları indiriliyor..."
+
+msgid "No transponders found for selected satellites. Existing XML is preserved."
+msgstr "Seçilen uydularda frekans bulunamadı. Mevcut XML korunuyor."
+
+msgid "Tuner list reloaded."
+msgstr "Tuner listesi yeniden yüklendi."
+
+msgid "Restart Enigma2 to apply the changes."
+msgstr "Değişiklik için Enigma2'yi yeniden başlatın."
+
+msgid "Wrote %d satellite positions and %d transponders.\n%s\n%s"
+msgstr "%d uydu konumu ve %d transponder yazıldı.\n%s\n%s"
+
+msgid "Backup: %s"
+msgstr "Yedek: %s"
+
+msgid "No previous file existed."
+msgstr "Önceki dosya yoktu."
+
+msgid "\nSkipped %d positions with no transponders."
+msgstr "\nFrekans bulunmayan %d konum atlandı."
+
+msgid "Which site would you like to use?"
+msgstr "Hangi siteyi kullanmak istiyorsunuz?"
+
+msgid "Left / Right: select source | OK: continue | EXIT: close"
+msgstr "Sol / Sağ: kaynak seç  |  OK: devam  |  EXIT: kapat"
+
+msgid "Create satellites.xml from SatBeams or KingOfSat"
+msgstr "SatBeams verilerinden satellites.xml oluşturur"
+
+msgid "API connection error: %s"
+msgstr "API bağlantı hatası: %s"
+
+msgid "Invalid JSON response: %s"
+msgstr "Geçersiz JSON yanıtı: %s"
+
+msgid "SatBeams returned an unsuccessful response"
+msgstr "SatBeams başarısız yanıt döndürdü"
+
+msgid "Unexpected satellite list format"
+msgstr "Konum listesi beklenen biçimde değil"
+
+msgid "Unexpected frequency list format"
+msgstr "Frekans listesi beklenen biçimde değil"
+
+msgid "API returned a different satellite position; please retry"
+msgstr "API farklı uydu konumu döndürdü; lütfen yeniden deneyin"
+
+msgid "Unexpected transponder list format"
+msgstr "Transponder listesi beklenen biçimde değil"
+
+msgid "API pagination limit exceeded"
+msgstr "API sayfalama sınırı aşıldı"
+
+msgid "Invalid transponder position"
+msgstr "Geçersiz frekans konumu"
+
+msgid "API returned a transponder outside the selected position: %s"
+msgstr "API seçilen konum dışında frekans döndürdü: %s"
+
+msgid "Missing satellite position in API record: %s"
+msgstr "API kaydında uydu konumu eksik: %s"
+
+msgid "Could not match transponder to actual satellite position: %s"
+msgstr "Frekansın gerçek uydu konumu eşleştirilemedi: %s"
+
+msgid "Could not read KingOfSat satellite table"
+msgstr "KingOfSat uydu tablosu okunamadı"
+
+msgid "KingOfSat transponder table is empty or has changed: "
+msgstr "KingOfSat frekans tablosu boş veya biçimi değişmiş: "
+
+msgid "DreamOSatSatellites v%s\nBy audi06_19\n\nEmail: info@dreamosat-forum.com\nGitHub: https://github.com/audi06\nSupport forum: https://www.dreamosat-forum.com\nLicense: %s\n\nData sources: https://satbeams.com\nKingOfSat: https://kingofsat.net"
+msgstr "DreamOSatSatellites v%s\nBy audi06_19\n\nE-posta: info@dreamosat-forum.com\nGitHub: https://github.com/audi06\nDestek forum: https://www.dreamosat-forum.com\nLisans: %s\n\nVeri kaynakları: https://satbeams.com\nKingOfSat: https://kingofsat.net"
+
+msgid "%s satellite positions"
+msgstr "%s uydu konumları"
+
+msgid "Downloading %s satellite list..."
+msgstr "%s konum listesi indiriliyor..."

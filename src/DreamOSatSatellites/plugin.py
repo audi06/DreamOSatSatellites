@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import
+from . import _
 
 import json
 import re
@@ -29,8 +30,8 @@ from .KingOfSatClient import KingOfSatClient
 
 
 PLUGIN_NAME = "DreamOSatSatellites"
-PLUGIN_VERSION = "1.3.0"
-PLUGIN_LICENSE = "GPL-2.0-or-later"
+PLUGIN_VERSION = "1.4.0"
+PLUGIN_LICENSE = "GPL-3.0"
 DESTINATION = "/etc/tuxbox/satellites.xml"
 
 if not hasattr(config.plugins, "satbeamssatellites"):
@@ -77,18 +78,18 @@ class SatBeamsSelection(Screen):
         self.busy = False
         self.closed = False
 
-        self["title"] = Label(self.source_name + " uydu konumları")
+        self["title"] = Label(_("%s satellite positions") % self.source_name)
         self["list"] = MenuList([], content=eListboxPythonMultiContent)
         desktop = getDesktop(0).size()
         self.list_scale = min({"hd": 1.0, "fhd": 1.5, "4k": 3.0}[settings.skin.value],
             desktop.width() / 1280.0, desktop.height() / 720.0)
         self["list"].l.setFont(0, gFont("Regular", int(25 * self.list_scale)))
         self["list"].l.setItemHeight(int(34 * self.list_scale))
-        self["status"] = Label("Konum listesi hazırlanıyor...")
-        self["key_red"] = Label("Kapat")
-        self["key_green"] = Label("Hepsini seç")
-        self["key_yellow"] = Label("Hepsini kaldır")
-        self["key_blue"] = Label("İndir ve oluştur")
+        self["status"] = Label(_("Preparing satellite list..."))
+        self["key_red"] = Label(_("Close"))
+        self["key_green"] = Label(_("Select all"))
+        self["key_yellow"] = Label(_("Clear all"))
+        self["key_blue"] = Label(_("Download and create"))
 
         self["actions"] = ActionMap(
             ["OkCancelActions", "ColorActions", "DirectionActions", "MenuActions"],
@@ -114,40 +115,40 @@ class SatBeamsSelection(Screen):
         if self.busy:
             return
         self.session.openWithCallback(self._menuChosen, ChoiceBox,
-            title="SatBeams - Menü", list=[
-                ("Profiller (1-5)", "profiles"),
-                ("Bölgesel seçim", "regions"),
-                ("Skin (4K / FHD / HD)", "skin"),
-                ("Hakkında / Yazar / Lisans", "about")])
+            title=_("DreamOSatSatellites - Menu"), list=[
+                (_("Profiles (1-5)"), "profiles"),
+                (_("Regional selection"), "regions"),
+                (_("Skin (4K / FHD / HD)"), "skin"),
+                (_("About / Author / License"), "about")])
 
     def _menuChosen(self, choice):
         if not choice:
             return
         if choice[1] == "about":
             self.session.open(MessageBox,
-                "DreamOSatSatellites v%s\nBy audi06_19\n\nE-posta: info@dreamosat-forum.com\nGitHub: https://github.com/audi06\nDestek forum: https://www.dreamosat-forum.com\nLisans: %s\n\nVeri kaynakları: https://satbeams.com\nKingOfSat: https://kingofsat.net" % (PLUGIN_VERSION, PLUGIN_LICENSE),
+                _("DreamOSatSatellites v%s\nBy audi06_19\n\nEmail: info@dreamosat-forum.com\nGitHub: https://github.com/audi06\nSupport forum: https://www.dreamosat-forum.com\nLicense: %s\n\nData sources: https://satbeams.com\nKingOfSat: https://kingofsat.net") % (PLUGIN_VERSION, PLUGIN_LICENSE),
                 MessageBox.TYPE_INFO)
         elif choice[1] == "profiles":
             self.session.openWithCallback(self._profileChosen, ChoiceBox,
-                title="Profil seç", list=[("Profil %d" % n, str(n)) for n in range(1, 6)])
+                title=_("Select profile"), list=[(_("Profile %d") % n, str(n)) for n in range(1, 6)])
         elif choice[1] == "regions":
             self.session.openWithCallback(self._regionChosen, ChoiceBox,
-                title="Seçime bölge ekle (yörünge aralıkları)", list=[
-                    ("All", "all"), ("add Europe (0°–60°E)", "europe"),
-                    ("add Atlantic (60°W–0°)", "atlantic"),
-                    ("add America (180°W–60°W)", "america"),
-                    ("add Asia (60°E–180°E)", "asia")])
+                title=_("Add region (orbital ranges)"), list=[
+                    (_("All"), "all"), (_("Add Europe (0-60E)"), "europe"),
+                    (_("Add Atlantic (60W-0)"), "atlantic"),
+                    (_("Add America (180W-60W)"), "america"),
+                    (_("Add Asia (60E-180E)"), "asia")])
         else:
             self.session.openWithCallback(self._skinChosen, ChoiceBox,
-                title="Ekran boyutu", list=[("4K", "4k"), ("FHD", "fhd"), ("HD", "hd")])
+                title=_("Screen size"), list=[("4K", "4k"), ("FHD", "fhd"), ("HD", "hd")])
 
     def _profileChosen(self, choice):
         if choice:
             slot = choice[1]
             self.session.openWithCallback(self._profileAction, ChoiceBox,
-                title="Profil %s" % slot, list=[
-                    ("Seçilen uyduları kaydet", (slot, "save")),
-                    ("Profili yükle", (slot, "load"))])
+                title=_("Profile %s") % slot, list=[
+                    (_("Save selected satellites"), (slot, "save")),
+                    (_("Load profile"), (slot, "load"))])
 
     def _profileAction(self, choice):
         if not choice:
@@ -166,14 +167,14 @@ class SatBeamsSelection(Screen):
             settings.profiles.value = json.dumps(profiles)
             settings.profiles.save()
             configfile.save()
-            self["status"].setText("Profil %s kaydedildi (%d konum)" % (slot, len(self.selected)))
+            self["status"].setText(_("Profile %s saved (%d positions)") % (slot, len(self.selected)))
         elif slot in profiles:
             available = set(item["key"] for item in self.positions)
             self.selected = set(profiles[slot]) & available
             self._refreshList()
             self._selectionStatus()
         else:
-            self["status"].setText("Profil %s henüz kaydedilmedi" % slot)
+            self["status"].setText(_("Profile %s has not been saved yet") % slot)
 
     def _regionChosen(self, choice):
         if not choice:
@@ -195,7 +196,7 @@ class SatBeamsSelection(Screen):
             settings.skin.save()
             configfile.save()
             self.session.open(MessageBox,
-                "Skin kaydedildi. Eklentiyi kapatıp açınca uygulanır. Boyut, mevcut ekran çözünürlüğüne sığdırılır.",
+                _("Skin saved. Close and reopen the plugin to apply. Size is limited to your screen resolution."),
                 MessageBox.TYPE_INFO, timeout=10)
 
     def _onClose(self):
@@ -205,7 +206,7 @@ class SatBeamsSelection(Screen):
         if self.busy:
             return
         self.busy = True
-        self["status"].setText(self.source_name + " konum listesi indiriliyor...")
+        self["status"].setText(_("Downloading %s satellite list...") % self.source_name)
         deferred = threads.deferToThread(self.client.get_positions)
         deferred.addCallbacks(self._positionsLoaded, self._failed)
 
@@ -216,7 +217,7 @@ class SatBeamsSelection(Screen):
         self.positions = positions
         self._refreshList(0)
         self["status"].setText(
-            "%d uydu konumu bulundu. OK: seç/kaldır | MENU: ayarlar" % len(positions)
+            _("%d positions found. OK: select/clear | MENU: settings") % len(positions)
         )
 
     def _failed(self, failure):
@@ -224,7 +225,7 @@ class SatBeamsSelection(Screen):
             return
         self.busy = False
         message = failure.getErrorMessage() if hasattr(failure, "getErrorMessage") else str(failure)
-        self["status"].setText("Hata: %s" % message)
+        self["status"].setText(_("Error: %s") % message)
         self.session.open(MessageBox, message, MessageBox.TYPE_ERROR, timeout=12)
 
     def _rowText(self, position):
@@ -280,7 +281,7 @@ class SatBeamsSelection(Screen):
 
     def _selectionStatus(self):
         self["status"].setText(
-            "%d / %d konum seçildi" % (len(self.selected), len(self.positions))
+            _("%d / %d positions selected") % (len(self.selected), len(self.positions))
         )
 
     def requestBuild(self):
@@ -289,13 +290,13 @@ class SatBeamsSelection(Screen):
         if not self.selected:
             self.session.open(
                 MessageBox,
-                "Önce en az bir uydu konumu seçin.",
+                _("Select at least one satellite position first."),
                 MessageBox.TYPE_INFO,
                 timeout=7,
             )
             return
         text = (
-            "%d konum indirilecek ve %s değiştirilecek. Devam edilsin mi?"
+            _("Download %d positions and replace %s. Continue?")
             % (len(self.selected), DESTINATION)
         )
         self.session.openWithCallback(
@@ -308,7 +309,7 @@ class SatBeamsSelection(Screen):
         chosen = [item for item in self.positions if item["key"] in self.selected]
         self.busy = True
         self["status"].setText(
-            "%d konumun frekansları indiriliyor..." % len(chosen)
+            _("Downloading transponders for %d positions...") % len(chosen)
         )
         deferred = threads.deferToThread(self._downloadAndInstall, chosen)
         deferred.addCallbacks(self._buildFinished, self._failed)
@@ -324,7 +325,7 @@ class SatBeamsSelection(Screen):
             rows.append((position, transponders))
         xml_bytes, stats = build_satellites_xml(rows)
         if not stats["transponders"]:
-            raise SatBeamsError("Seçilen uydularda frekans bulunamadı. Mevcut XML korunuyor.")
+            raise SatBeamsError(_("No transponders found for selected satellites. Existing XML is preserved."))
         stats["empty"] = len(empty)
         backup = install_xml(xml_bytes, DESTINATION)
         return stats, backup
@@ -338,29 +339,29 @@ class SatBeamsSelection(Screen):
             from Components.NimManager import nimmanager
 
             nimmanager.readTransponders()
-            reload_text = "Tuner listesi yeniden yüklendi."
+            reload_text = _("Tuner list reloaded.")
         except Exception:
-            reload_text = "Değişiklik için Enigma2'yi yeniden başlatın."
+            reload_text = _("Restart Enigma2 to apply the changes.")
 
         message = (
-            "%d uydu konumu ve %d transponder yazıldı.\n%s\n%s"
+            _("Wrote %d satellite positions and %d transponders.\n%s\n%s")
             % (
                 stats["satellites"],
                 stats["transponders"],
                 reload_text,
-                ("Yedek: %s" % backup) if backup else "Önceki dosya yoktu.",
+                (_("Backup: %s") % backup) if backup else _("No previous file existed."),
             )
         )
         self["status"].setText(message.replace("\n", " "))
         if stats.get("empty"):
-            message += "\nFrekans bulunmayan %d konum atlandı." % stats["empty"]
+            message += _("\nSkipped %d positions with no transponders.") % stats["empty"]
         self.session.open(MessageBox, message, MessageBox.TYPE_INFO, timeout=15)
 
 
 class SourceSelection(Screen):
     def __init__(self, session):
         directory = os.path.dirname(__file__)
-        self.skin = '''<screen position="center,center" size="1000,430" title="Uydu kaynağı seçimi">
+        self.skin = '''<screen position="center,center" size="1000,430" title="DreamOSatSatellites">
             <widget name="prompt" position="30,20" size="940,45" font="Regular;28" halign="center" />
             <widget name="satbeams" position="60,100" size="400,140" pixmap="%s" alphatest="blend" scale="1" />
             <widget name="kingofsat" position="540,100" size="400,140" pixmap="%s" alphatest="blend" scale="1" />
@@ -369,11 +370,11 @@ class SourceSelection(Screen):
         </screen>''' % (os.path.join(directory, 'satbeams-logo.svg'), os.path.join(directory, 'kingofsat-logo.png'))
         Screen.__init__(self, session)
         self.choice = 0
-        self["prompt"] = Label("Hangi siteyi kullanmak istiyorsunuz?")
+        self["prompt"] = Label(_("Which site would you like to use?"))
         self["satbeams"] = Pixmap()
         self["kingofsat"] = Pixmap()
         self["selection"] = Label()
-        self["help"] = Label("Sol / Sağ: kaynak seç  |  OK: devam  |  EXIT: kapat")
+        self["help"] = Label(_("Left / Right: select source | OK: continue | EXIT: close"))
         self["actions"] = ActionMap(["OkCancelActions", "DirectionActions"], {
             "left": self.toggle, "right": self.toggle,
             "ok": self.accept, "cancel": self.close}, -1)
@@ -402,14 +403,14 @@ def Plugins(**kwargs):
     return [
         PluginDescriptor(
             name=PLUGIN_NAME,
-            description="SatBeams verilerinden satellites.xml oluşturur",
+            description=_("Create satellites.xml from SatBeams or KingOfSat"),
             where=PluginDescriptor.WHERE_PLUGINMENU,
             icon="plugin.svg",
             fnc=main,
         ),
         PluginDescriptor(
             name=PLUGIN_NAME,
-            description="SatBeams verilerinden satellites.xml oluşturur",
+            description=_("Create satellites.xml from SatBeams or KingOfSat"),
             where=PluginDescriptor.WHERE_EXTENSIONSMENU,
             fnc=main,
         ),

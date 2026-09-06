@@ -1,0 +1,185 @@
+# DreamOSatSatellites translations
+# SPDX-License-Identifier: GPL-3.0-only
+msgid ""
+msgstr ""
+"Project-Id-Version: DreamOSatSatellites 1.4.0\n"
+"Report-Msgid-Bugs-To: info@dreamosat-forum.com\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Preparing satellite list..."
+msgstr ""
+
+msgid "Close"
+msgstr ""
+
+msgid "Select all"
+msgstr ""
+
+msgid "Clear all"
+msgstr ""
+
+msgid "Download and create"
+msgstr ""
+
+msgid "DreamOSatSatellites - Menu"
+msgstr ""
+
+msgid "Profiles (1-5)"
+msgstr ""
+
+msgid "Regional selection"
+msgstr ""
+
+msgid "Skin (4K / FHD / HD)"
+msgstr ""
+
+msgid "About / Author / License"
+msgstr ""
+
+msgid "Select profile"
+msgstr ""
+
+msgid "Profile %d"
+msgstr ""
+
+msgid "Profile %s"
+msgstr ""
+
+msgid "Add region (orbital ranges)"
+msgstr ""
+
+msgid "All"
+msgstr ""
+
+msgid "Add Europe (0-60E)"
+msgstr ""
+
+msgid "Add Atlantic (60W-0)"
+msgstr ""
+
+msgid "Add America (180W-60W)"
+msgstr ""
+
+msgid "Add Asia (60E-180E)"
+msgstr ""
+
+msgid "Screen size"
+msgstr ""
+
+msgid "Save selected satellites"
+msgstr ""
+
+msgid "Load profile"
+msgstr ""
+
+msgid "Profile %s saved (%d positions)"
+msgstr ""
+
+msgid "Profile %s has not been saved yet"
+msgstr ""
+
+msgid "Skin saved. Close and reopen the plugin to apply. Size is limited to your screen resolution."
+msgstr ""
+
+msgid "%d positions found. OK: select/clear | MENU: settings"
+msgstr ""
+
+msgid "Error: %s"
+msgstr ""
+
+msgid "%d / %d positions selected"
+msgstr ""
+
+msgid "Select at least one satellite position first."
+msgstr ""
+
+msgid "Download %d positions and replace %s. Continue?"
+msgstr ""
+
+msgid "Downloading transponders for %d positions..."
+msgstr ""
+
+msgid "No transponders found for selected satellites. Existing XML is preserved."
+msgstr ""
+
+msgid "Tuner list reloaded."
+msgstr ""
+
+msgid "Restart Enigma2 to apply the changes."
+msgstr ""
+
+msgid "Wrote %d satellite positions and %d transponders.\n%s\n%s"
+msgstr ""
+
+msgid "Backup: %s"
+msgstr ""
+
+msgid "No previous file existed."
+msgstr ""
+
+msgid "\nSkipped %d positions with no transponders."
+msgstr ""
+
+msgid "Which site would you like to use?"
+msgstr ""
+
+msgid "Left / Right: select source | OK: continue | EXIT: close"
+msgstr ""
+
+msgid "Create satellites.xml from SatBeams or KingOfSat"
+msgstr ""
+
+msgid "API connection error: %s"
+msgstr ""
+
+msgid "Invalid JSON response: %s"
+msgstr ""
+
+msgid "SatBeams returned an unsuccessful response"
+msgstr ""
+
+msgid "Unexpected satellite list format"
+msgstr ""
+
+msgid "Unexpected frequency list format"
+msgstr ""
+
+msgid "API returned a different satellite position; please retry"
+msgstr ""
+
+msgid "Unexpected transponder list format"
+msgstr ""
+
+msgid "API pagination limit exceeded"
+msgstr ""
+
+msgid "Invalid transponder position"
+msgstr ""
+
+msgid "API returned a transponder outside the selected position: %s"
+msgstr ""
+
+msgid "Missing satellite position in API record: %s"
+msgstr ""
+
+msgid "Could not match transponder to actual satellite position: %s"
+msgstr ""
+
+msgid "Could not read KingOfSat satellite table"
+msgstr ""
+
+msgid "KingOfSat transponder table is empty or has changed: "
+msgstr ""
+
+msgid "DreamOSatSatellites v%s\nBy audi06_19\n\nEmail: info@dreamosat-forum.com\nGitHub: https://github.com/audi06\nSupport forum: https://www.dreamosat-forum.com\nLicense: %s\n\nData sources: https://satbeams.com\nKingOfSat: https://kingofsat.net"
+msgstr ""
+
+msgid "%s satellite positions"
+msgstr ""
+
+msgid "Downloading %s satellite list..."
+msgstr ""
